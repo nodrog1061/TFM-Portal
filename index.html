@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+
+    <title>Bootstrap Example</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="main.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/2288579c21.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <!-- Vertical navbar -->
+    <div class="vertical-nav bg-white" id="sidebar">
+        <div class="py-4 px-3 mb-4 bg-light">
+            <div class="media d-flex align-items-center"><img src="img/tfm_logo.png" alt="Unit Logo" class="mr-3 w-100"></div>
+        </div>
+    
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+    
+        <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+            <a href="#" class="nav-link text-dark font-italic bg-light">
+                    <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                    OPORDs
+                </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link text-dark font-italic">
+                    <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+                    Mod List
+                </a>
+        </li>
+        </ul>
+    
+        <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Usefull links</p>
+    
+        <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+            <a class="nav-link py-4 px-3 mb-4 rounded-pill" style="background-color: #1c82cc;" href="teamspeak://31.186.251.172?name=Task%20Force%20Misfit&password=SFG">
+                <div class="media d-flex align-items-center"><i class="fab fa-teamspeak px-3 fs-1 text-white"></i>
+                  <div class="media-body">
+                    <h4 class="m-0 text-white">Teamspeak</h4>
+                    <p class="font-weight-light text-dark mb-0">Click To Join</p>
+                  </div>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link py-4 px-3 mb-4 rounded-pill" style="background-color: #7289DA;" href="https://discord.gg/wFvTFJY6rM">
+                <div class="media d-flex align-items-center"><i class="fab fa-discord px-3 fs-1 text-white"></i>
+                  <div class="media-body">
+                    <h4 class="m-0 text-white">Discord</h4>
+                    <p class="font-weight-light text-dark mb-0">Click To Join</p>
+                  </div>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link py-4 px-3 mb-4 rounded-pill" style="background-color: #1b2838;" href="https://steamcommunity.com/id/Singho/" target="https://steamcommunity.com">
+                <div class="media d-flex align-items-center"><i class="fab fa-steam px-3 fs-1 text-white"></i>
+                  <div class="media-body">
+                    <h4 class="m-0 text-white">Singh</h4>
+                    <p class="font-weight-light text-secondary mb-0">Click To See Profile</p>
+                  </div>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link py-4 px-3 mb-4 rounded-pill" style="background-color: #1b2838;" href="https://steamcommunity.com/profiles/76561198174596734" target="https://steamcommunity.com">
+                <div class="media d-flex align-items-center"><i class="fab fa-steam px-3 fs-1 text-white"></i>
+                  <div class="media-body">
+                    <h4 class="m-0 text-white">Carter</h4>
+                    <p class="font-weight-light text-secondary mb-0">Click To See Profile</p>
+                  </div>
+                </div>
+            </a>
+        </li>
+        </ul>
+    </div>
+    <!-- End vertical navbar -->
+  
+
+    <!-- Page content holder -->
+    <div class="page-content p-5" id="content">
+
+         <!-- Toggle button -->
+         <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-circle shadow-sm mb-4"><i class="fa fa-bars mr-2"></i></button>
+
+
+        <div class="bd-callout bd-callout-danger">
+            <h4 id="asynchronous-methods-and-transitions">Asynchronous methods and transitions</h4>
+            
+            <p>All API methods are <strong>asynchronous</strong> and start a <strong>transition</strong>. They return to the caller as soon as the transition is started but <strong>before it ends</strong>. In addition, a method call on a <strong>transitioning component will be ignored</strong>.</p>
+            
+            <p><a href="/docs/4.0/getting-started/javascript/">See our JavaScript documentation for more information.</a></p>
+        </div>
+
+    <script>
+        $(function() {
+        // Sidebar toggle behavior
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content').toggleClass('active');
+            });
+        });
+    </script>
+</body>
