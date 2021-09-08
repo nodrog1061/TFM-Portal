@@ -14,9 +14,28 @@
     <script src="https://kit.fontawesome.com/2288579c21.js" crossorigin="anonymous"></script>
     <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
 
+    
+
 </head>
 
 <body>
+    <!--a nice bit of TOAST
+    <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+        <div id="submit?" class="toast" style="position: absolute; top: 0; right: 0;">
+          <div class="toast-header">
+            <img src="..." class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="toast-body">
+            Hello, world! This is a toast message.
+          </div>
+        </div>
+    </div>-->
+
     <!-- Vertical navbar -->
     <div class="vertical-nav bg-white" id="sidebar">
         <div class="py-4 px-3 mb-4 bg-light">
@@ -95,7 +114,7 @@
          <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-circle shadow-sm mb-4"><i class="fa fa-bars mr-2"></i></button>
 
 
-        <div class="bd-callout bd-callout-danger">
+        <div class="bd-callout bd-callout-danger active" id="infoBar">
             <h4 id="asynchronous-methods-and-transitions">Asynchronous methods and transitions</h4>
             
             <p>All API methods are <strong>asynchronous</strong> and start a <strong>transition</strong>. They return to the caller as soon as the transition is started but <strong>before it ends</strong>. In addition, a method call on a <strong>transitioning component will be ignored</strong>.</p>
@@ -117,11 +136,14 @@
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
-            <button class="btn btn-primary button pageclip-form__submit" type="submit">
+            <button class="btn btn-primary button pageclip-form__submit" type="submit" id="formSubmit">
                 <span>Submit</span>
             </button>
           </form>
-    
+
+          <button class="btn btn-primary button pageclip-form__submit" id="test">
+            
+        <p id="pTest"></p>
     <script>
         $(function() {
         // Sidebar toggle behavior
@@ -129,5 +151,59 @@
                 $('#sidebar, #content').toggleClass('active');
             });
         });
+        $(function() {
+        // Sidebar toggle behavior
+            $('#test').on('click', function() {
+                $('#infoBar').toggleClass('active');
+            });
+        });
+
+        function postTest(){
+          document.getElementById("pTest").innerHTML = jQuery.post("https://partner.steam-api.com/ISteamWorkshop/AssociateWorkshopItems/v1/?key=D87A10014016F91E3BF9DF8BE688F024&appid=107410&itemcount=1&publishedfileid%5B0%5D=583496184")
+        }
+        
+        $.ajax({
+          url: "https://api.steampowered.com/ISteamRemoteStorage/GetCollectionDetails/v1/?key=D87A10014016F91E3BF9DF8BE688F024",
+          type:"POST",
+          data:"collectioncount=1&publishedfileids%5B0%5D=1390826487",
+          contentType:"application/x-www-form-urlencoded",
+          dataType:"json",
+          success: function(text){
+            response = text;
+            console.log(response);
+            console.log(response.response['collectiondetails']['0']['children']['0']['publishedfileid']); // Logs output to dev tools console.
+            console.log(Object.keys(response.response['collectiondetails']['0']['children']).length);
+
+            request =[]
+
+            for (let i = 0; i < (Object.keys(response.response['collectiondetails']['0']['children']).length); i++) {
+            
+              /* request.push({
+                key:   `publishedfileids[${i}]`,
+                value: (response.response['collectiondetails']['0']['children'][i.toString()]['publishedfileid']).toString()
+              }); */
+              request[`publishedfileids[${i}]`] = (response.response['collectiondetails']['0']['children'][i.toString()]['publishedfileid']).toString();
+            }
+            console.log(request);
+
+            console.log(`itemcount=1&${JSON.stringify(request)}`)
+             /* $.ajax({
+              url: "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/?key=D87A10014016F91E3BF9DF8BE688F024",
+              type:"POST",
+              data:"itemcount=1&publishedfileids%5B0%5D=1390826487",
+              contentType:"application/x-www-form-urlencoded",
+              dataType:"json",
+              success: function(text){
+                response = text;
+                console.log(response);
+                console.log(response.response['collectiondetails']['0']['children']['0']['publishedfileid']); // Logs output to dev tools console.
+              }
+            })  */
+          
+          
+          }
+        });
+        
+        
     </script>
 </body>

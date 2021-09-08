@@ -37,6 +37,12 @@
   #sidebar.active {
     margin-left: -17rem;
   }
+  #infoBar.active {
+    margin-left: -100rem;
+    margin-bottom: -10rem;
+    border: 0ch;
+    transition: all 0.4s;
+  }
   
   #content.active {
     width: 100%;
